@@ -5,6 +5,7 @@ This Python program implements the Hill cipher, a classical encryption method . 
 - **Encryption**: Convert plaintext into ciphertext using a specified key.
 - **Decryption**: Convert ciphertext back into plaintext using the same key.
 - **User-Friendly**: Simple command-line interface for easy interaction.
+- **Input Validation**: Ensures that all values for the cipher key are valid integers.
 
 ## Usage
 ### Run the Program
