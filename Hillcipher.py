@@ -81,22 +81,25 @@ def decrypt(cipher_text, cipher_key):
     return plain_text
 
 def main():
-    choice = input("Do you want to perform encryption or decryption? \n").lower()
-    
-    if choice == "encryption":
-        plain_text = input("Enter your plain text : ")
-        cipher_key = get_key()
-        cipher_text = encrypt(plain_text, cipher_key)
-        print(f"Cipher text: {cipher_text}")
+    while True:
+        choice = input("Do you want to perform encryption or decryption? \n").lower()
+        
+        if choice == "encryption":
+            plain_text = input("Enter your plain text: ")
+            cipher_key = get_key()
+            cipher_text = encrypt(plain_text, cipher_key)
+            print(f"Cipher text: {cipher_text}")
+            break  # Exit the loop after successful encryption
 
-    elif choice == "decryption":
-        cipher_text = input("Enter your cipher text : ")
-        cipher_key = get_key()
-        plain_text = decrypt(cipher_text, cipher_key)
-        print(f"Plain text: {plain_text}")
+        elif choice == "decryption":
+            cipher_text = input("Enter your cipher text: ")
+            cipher_key = get_key()
+            plain_text = decrypt(cipher_text, cipher_key)
+            print(f"Plain text: {plain_text}")
+            break  # Exit the loop after successful decryption
 
-    else:
-        print("Invalid choice. Please choose 'encryption' or 'decryption'.")
-
+        else:
+            print("Invalid choice. Please choose 'encryption' or 'decryption'.")
+            
 if __name__ == "__main__":
     main()
