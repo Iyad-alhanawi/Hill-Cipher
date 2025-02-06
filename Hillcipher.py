@@ -1,5 +1,6 @@
 import numpy as np
 import string
+from math import gcd
 
 def get_key():
     """Function to get a 2x2 cipher key from user input."""
@@ -18,8 +19,17 @@ def get_key():
         cipher_key.append(row)
     return np.array(cipher_key)
 
+def is_valid_key(cipher_key):
+    """Check if the key is valid (determinant must be coprime to 26)."""
+    det = int(np.round(np.linalg.det(cipher_key))) % 26
+    return gcd(det, 26) == 1
+
 def encrypt(plain_text, cipher_key):
     """Encrypts the plain text using the Hill cipher."""
+    # Check if the key is valid
+    if not is_valid_key(cipher_key):
+        raise ValueError("Invalid key. The determinant must be coprime to 26.")
+
     # Remove spaces and convert to lowercase
     plain_text = plain_text.replace(" ", "").lower()
     
